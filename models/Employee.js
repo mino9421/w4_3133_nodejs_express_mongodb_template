@@ -79,7 +79,7 @@ const EmployeeSchema = new mongoose.Schema({
 //Writing Query Helpers
 
 
-
+// Moddleware
 EmployeeSchema.pre('save', (next) => {
   console.log("Before Save")
   let now = Date.now()
