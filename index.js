@@ -6,7 +6,7 @@ const app = express();
 app.use(express.json()); // Make sure it comes back as json
 
 //TODO - Replace you Connection String here
-mongoose.connect('PASTE_YOUR_CONNECTION_STRING_HERE', {
+mongoose.connect('mongodb+srv://armen:mino199421@comp3123.flrd9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
