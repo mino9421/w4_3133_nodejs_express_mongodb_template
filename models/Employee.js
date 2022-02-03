@@ -67,17 +67,33 @@ const EmployeeSchema = new mongoose.Schema({
 });
 
 //Declare Virtual Fields
-
+EmployeeSchema.virtual('fullName')
+.get(function() {
+  return `${this.firstname} ${this.lastname}`
+})
+.set(function(value) {
+  console.log(value)
+})
 
 //Custom Schema Methods
 //1. Instance Method Declaration
+EmployeeSchema.methods.getFullName = function() {
+  return `${this.firstname} ${this.lastname}`
+}
 
+EmployeeSchema.methods.getFormatedSalary = function() {
+  return `$${this.salary}`
+}
 
 //2. Static method declararion
-
+EmployeeSchema.static("getEmployeeByFirstName", function(value) {
+  return this.find({firstname: value})
+});
 
 //Writing Query Helpers
-
+EmployeeSchema.query.byFirstName = function(fnm) {
+  return this.where({firstname: fnm})
+}
 
 // Moddleware
 EmployeeSchema.pre('save', (next) => {

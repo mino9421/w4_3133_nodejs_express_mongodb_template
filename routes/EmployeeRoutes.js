@@ -42,17 +42,14 @@ app.get('/employees/firstname/:name', async (req, res) => {
   const employees = await employeeModel.find({firstname : name});
   
   //Using Virtual Field Name
-  //console.log(employees[0].fullname)
+  console.log(employees[0].fullname)
 
   //Using Instance method
-  //console.log(employees[0].getFullName())
+  console.log(employees[0].getFullName())
 
-  //Using Static method
-  //const employees = await employeeModel.getEmployeeByFirstName(name)
-  
-  //Using Query Helper
-  //const employees = await employeeModel.findOne().byFirstName(name)
-  
+  //Using Instance method
+  console.log(employees[0].getFormatedSalary())
+
   try {
     if(employees.length != 0){
       res.send(employees);
