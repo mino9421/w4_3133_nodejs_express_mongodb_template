@@ -95,7 +95,7 @@ EmployeeSchema.query.byFirstName = function(fnm) {
   return this.where({firstname: fnm})
 }
 
-// Moddleware
+//Pre Middleware
 EmployeeSchema.pre('save', (next) => {
   console.log("Before Save")
   let now = Date.now()
@@ -118,7 +118,7 @@ EmployeeSchema.pre('findOneAndUpdate', (next) => {
   next()
 });
 
-
+// Post Middleware
 EmployeeSchema.post('init', (doc) => {
   console.log('%s has been initialized from the db', doc._id);
 });
@@ -135,5 +135,6 @@ EmployeeSchema.post('remove', (doc) => {
   console.log('%s has been removed', doc._id);
 });
 
+//Create Model
 const Employee = mongoose.model("Employee", EmployeeSchema);
 module.exports = Employee;
