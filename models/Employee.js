@@ -95,6 +95,8 @@ EmployeeSchema.query.byFirstName = function(fnm) {
   return this.where({firstname: fnm})
 }
 
+
+
 //Pre Middleware
 EmployeeSchema.pre('save', (next) => {
   console.log("Before Save")
@@ -117,6 +119,8 @@ EmployeeSchema.pre('findOneAndUpdate', (next) => {
   console.log(this.updatedat)
   next()
 });
+
+
 
 // Post Middleware
 EmployeeSchema.post('init', (doc) => {

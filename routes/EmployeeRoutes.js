@@ -2,10 +2,12 @@ const express = require('express');
 const employeeModel = require('../models/Employee');
 const app = express();
 
+// GET
 //Read ALL
 //http://localhost:8081/employees
 app.get('/employees', async (req, res) => {
   const employees = await employeeModel.find({});
+  
   //Sorting
   //use "asc", "desc", "ascending", "descending", 1, or -1
   //const employees = await employeeModel.find({}).sort({'firstname': -1});
@@ -34,6 +36,7 @@ app.get('/employee', async (req, res) => {
     res.status(500).send(err);
   }
 });
+
 
 //Search By First Name - PATH Parameter
 //http://localhost:8081/employees/firstname/pritesh
@@ -153,6 +156,9 @@ app.get('/employees/test', async (req, res) => {
       "salary": 10000.50
     }
 */
+
+
+// POST
 //http://localhost:8081/employee
 app.post('/employee', async (req, res) => {
   
@@ -177,6 +183,7 @@ app.post('/employee', async (req, res) => {
     }
   });
 
+
 //Update Record
 //http://localhost:8081/employee/60174acfcde1ab2e78a3a9b0
 app.patch('/employee/:id', async (req, res) => {
@@ -189,6 +196,7 @@ app.patch('/employee/:id', async (req, res) => {
     res.status(500).send(err)
   }
 })
+
 
 //Delete Record by ID
 //http://localhost:8081/employee/5d1f6c3e4b0b88fb1d257237
@@ -207,7 +215,7 @@ app.delete('/employee/:id', async (req, res) => {
     }
   })
 
-  //Delete Record using findOneAndDelete()
+//Delete Record using findOneAndDelete()
 //http://localhost:8081/employee/delete?emailid=5d1f6c3e4b0b88fb1d257237
 app.get('/employee/delete', async (req, res) => {
   try {
